@@ -1,6 +1,6 @@
 export default class ServerService { 
     async getClients() {
-        const res = await fetch('http://localhost:4000/clients')
+        const res = await fetch('https://arcane-everglades-15227.herokuapp.com/clients')
           
         if(!res.ok) {
             throw new Error(`Could not fetch, received ${res.status}`)
@@ -14,9 +14,9 @@ export default class ServerService {
         // return {data}
 }
      async addClient(client){
-        fetch(`http://localhost:4000/clients/add?name=${client.name}&phone=${client.phone}&status=${client.status}`)
+        await fetch(`https://arcane-everglades-15227.herokuapp.com/clients/add?name=${client.name}&phone=${client.phone}&status=${client.status}`)
       }
       async removeClient(id) {
-        fetch(`http://localhost:4000/clients/remove?id=${id}`)
+       await fetch(`https://arcane-everglades-15227.herokuapp.com/clients/remove?id=${id}`)
       }
 }
