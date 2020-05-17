@@ -27,12 +27,6 @@ const useStyles = makeStyles((theme) => ({
             <Typography variant="h6" className={classes.title}>
               Clients
             </Typography>
-            <Typography variant="h6" className={classes.title}>
-              loans
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-              guarantors
-            </Typography>
           </Toolbar>
         </AppBar>
       </div>
