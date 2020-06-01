@@ -6,7 +6,7 @@ export default class ClientsSearchPanel extends Component  {
   state = {
     searchType: 'term',
     term: '',
-    numb: 0,
+    numb: '',
     checkedTerm: true,
     checkedNumb: false
 }
@@ -14,7 +14,7 @@ onTermChange = (e) => {
   const {onChangeTerm} = this.props
   this.setState({
       term: e.target.value,
-      numb: 0
+      numb: ''
   })
   onChangeTerm(e.target.value)   
 }
@@ -31,7 +31,7 @@ clearState = (searchType) => {
     if(searchType === 'term') {
         this.setState({
             term: '',
-            numb: 0,
+            numb: '',
             searchType: searchType,
             checkedTerm: true,
             checkedNumb: false
@@ -39,14 +39,14 @@ clearState = (searchType) => {
     } else {
         this.setState({
             term: '',
-            numb: 0,
+            numb: '',
             searchType: searchType,
             checkedTerm: false,
             checkedNumb: true
         })
     }
     
-    onChangeNumb(0)
+    onChangeNumb('')
     onChangeTerm('')
 }
 
@@ -61,7 +61,7 @@ clearState = (searchType) => {
                       value = {this.state.term} 
                       onChange={this.onTermChange}
                       variant="outlined"
-                      label = "Поиск по Имени"/>
+                      label = "Поиск по имени"/>
                 <div className="search-panel__checkboxes">
                     <FormControlLabel
                         control= {
@@ -84,6 +84,7 @@ clearState = (searchType) => {
             <div className="search-panel">
                 <TextField type="number"
                       className="form-control search-input"
+                      placeholder="Введите номер"
                       value = {this.state.numb} 
                       onChange={this.onNumbChange}
                       variant="outlined"

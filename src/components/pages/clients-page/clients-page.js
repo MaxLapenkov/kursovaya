@@ -18,7 +18,7 @@ import withServerService from '../../hoc/with-server-service'
     clients: [],
     loading: true,
     term: '',
-    numb: 0,
+    numb: '',
     visibleClients: []
   }
 
@@ -74,7 +74,7 @@ import withServerService from '../../hoc/with-server-service'
     }
     searchItemByNumb = (items, numb) => {
       const {clients} = this.state
-      if(numb === 0) {
+      if(numb === 0 || numb === '') {
         this.setState({
           visibleClients: clients
         })   
