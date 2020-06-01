@@ -20,6 +20,7 @@ import Paper from '@material-ui/core/Paper';
     renderClient = ({client_id, name, phone, status}) => {
         return (
           <TableRow key={client_id}>
+            <TableCell component="th" scope="row">{client_id}</TableCell>
             <TableCell component="th" scope="row">{name}</TableCell>
             <TableCell align="right">{phone}</TableCell>
             <TableCell align="right">{status}</TableCell>
@@ -37,6 +38,7 @@ import Paper from '@material-ui/core/Paper';
                 <Table aria-label="simple table">
                 <TableHead>
                   <TableRow>
+                      <TableCell>#</TableCell>
                       <TableCell>Имя</TableCell>
                       <TableCell align="right">Телефон</TableCell>
                       <TableCell align="right">Статус</TableCell>
