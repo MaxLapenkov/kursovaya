@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/kursovaya/static/css/main.7d222d5f.chunk.css",
-    "main.js": "/kursovaya/static/js/main.d63807e2.chunk.js",
-    "main.js.map": "/kursovaya/static/js/main.d63807e2.chunk.js.map",
+    "main.js": "/kursovaya/static/js/main.e7234af9.chunk.js",
+    "main.js.map": "/kursovaya/static/js/main.e7234af9.chunk.js.map",
     "runtime-main.js": "/kursovaya/static/js/runtime-main.7cf0c878.js",
     "runtime-main.js.map": "/kursovaya/static/js/runtime-main.7cf0c878.js.map",
     "static/css/2.d1a1a8b6.chunk.css": "/kursovaya/static/css/2.d1a1a8b6.chunk.css",
     "static/js/2.3eaa00da.chunk.js": "/kursovaya/static/js/2.3eaa00da.chunk.js",
     "static/js/2.3eaa00da.chunk.js.map": "/kursovaya/static/js/2.3eaa00da.chunk.js.map",
     "index.html": "/kursovaya/index.html",
-    "precache-manifest.0ac2c0b3857a78dba993093c329323b1.js": "/kursovaya/precache-manifest.0ac2c0b3857a78dba993093c329323b1.js",
+    "precache-manifest.eb47afa370a64ba3663fcd9ec98fefd1.js": "/kursovaya/precache-manifest.eb47afa370a64ba3663fcd9ec98fefd1.js",
     "service-worker.js": "/kursovaya/service-worker.js",
     "static/css/2.d1a1a8b6.chunk.css.map": "/kursovaya/static/css/2.d1a1a8b6.chunk.css.map",
     "static/css/main.7d222d5f.chunk.css.map": "/kursovaya/static/css/main.7d222d5f.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.d1a1a8b6.chunk.css",
     "static/js/2.3eaa00da.chunk.js",
     "static/css/main.7d222d5f.chunk.css",
-    "static/js/main.d63807e2.chunk.js"
+    "static/js/main.e7234af9.chunk.js"
   ]
 }

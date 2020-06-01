@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import { TextField, Select, MenuItem  } from '@material-ui/core';
 const ClientsForm = ({addClient}) => {
-    const [name, setName] = useState('Иван Иванов');
+    const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [status, setStatus] = useState('Физическое лицо');
     const [nameError, setNameError] = useState(false)
@@ -25,7 +25,7 @@ const ClientsForm = ({addClient}) => {
           </Select>
           <Button className = "form__button" variant="contained" color="primary" size="small" 
           onClick={() =>{
-            if(client.name.length > 40) {
+            if(client.name.length > 40 || client.name.length === 0) {
               setNameError(true)
             } else if (client.phone.length !== 11) {
               setPhoneError(true)
