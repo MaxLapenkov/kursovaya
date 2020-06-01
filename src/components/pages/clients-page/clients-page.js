@@ -15,93 +15,93 @@ import withServerService from '../../hoc/with-server-service'
  class ClientsPage extends Component {
   
   state = {
-    clients: [],
+    items: [],
     loading: true,
     term: '',
     numb: '',
-    visibleClients: []
+    visibleItems: []
   }
 
   componentDidMount() {
-    this.getClients()
+    this.getItems()
   }
-  getClients = () => {
+  getItems = () => {
     const {serverService} = this.props
     serverService.getClients()
     .then(({data}) => {
       this.setState({
-        clients: data,
-        visibleClients: data,
+        items: data,
+        visibleItems: data,
         loading: false
       })  
     })
     .catch(err => console.error(err))
   }
 
-  removeClient = (id) => {
+  removeItem = (id) => {
     const {serverService} = this.props
     this.setState({
       loading: true
     })
     serverService.removeClient(id)
-    .then(this.getClients)
+    .then(this.getItems)
     .catch(err => console.error(err))
   }
 
-  addClient = (client) => {
+  addItem = (item) => {
     const {serverService} = this.props
     this.setState({
       loading: true
     })
-    serverService.addClient(client)
-      .then(this.getClients)
+    serverService.addClient(item)
+      .then(this.getItems)
       .catch(err => console.error(err))
   }
-  searchItemByTerm = (items, term) => {
-      const {clients} = this.state
+  searchItemByTerm = (SearchItems, term) => {
+      const {items} = this.state
       if(term.length === 0) {
         this.setState({
-          visibleClients: clients
+          visibleItems: items
         })
       }
-      const result = items.filter((item) => {
+      const result = SearchItems.filter((item) => {
         return item.name.toLowerCase()
         .indexOf(term.toLowerCase()) > -1
       });
       this.setState({
-        visibleClients: result
+        visibleItems: result
       })  
     }
-    searchItemByNumb = (items, numb) => {
-      const {clients} = this.state
+    searchItemByNumb = (SearchItems, numb) => {
+      const {items} = this.state
       if(numb === 0 || numb === '') {
         this.setState({
-          visibleClients: clients
+          visibleItems: items
         })   
       } else {
-        const result = items.filter((item) => {
+        const result = SearchItems.filter((item) => {
           return item.client_id === numb
         });
         
         this.setState({
-          visibleClients: result
+          visibleItems: result
         }) 
       }
        
     }
   onChangeTerm = (term) => {
-    const { clients } = this.state
+    const { items } = this.state
     this.setState({term})
-    this.searchItemByTerm(clients, term)
+    this.searchItemByTerm(items, term)
   }
   onChangeNumb = (numb) => {
-    const { clients } = this.state
+    const { items } = this.state
     this.setState({numb: Number(numb)})
-    this.searchItemByNumb(clients, Number(numb))
+    this.searchItemByNumb(items, Number(numb))
   }
 
   render() {
-    const { loading, visibleClients } = this.state
+    const { loading, visibleItems } = this.state
 
     if(loading)
       return (
@@ -109,7 +109,7 @@ import withServerService from '../../hoc/with-server-service'
           <TableContainer component={Paper}>
             <Spinner/>
           </TableContainer>
-          <ClientsForm addClient={this.addClient}/>
+          <ClientsForm addClient={this.addItem}/>
       </div>
       )
     return (
@@ -118,10 +118,10 @@ import withServerService from '../../hoc/with-server-service'
         <ClientsSearchPanel onChangeTerm={this.onChangeTerm} onChangeNumb={this.onChangeNumb}/>
       </ErrorBoundary>
       <ErrorBoundary>
-        <ClientsTable clients = {visibleClients} removeClient={this.removeClient}/>
+        <ClientsTable clients = {visibleItems} removeClient={this.removeItem}/>
       </ErrorBoundary>
       <ErrorBoundary>
-        <ClientsForm addClient={this.addClient}/>
+        <ClientsForm addClient={this.addItem}/>
       </ErrorBoundary>
     </div>
       
