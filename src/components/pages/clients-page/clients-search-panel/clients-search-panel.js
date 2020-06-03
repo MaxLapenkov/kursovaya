@@ -57,17 +57,17 @@ clearState = (searchType) => {
             <div className="search-panel">
             <TextField type="text"
                       className="form-control search-input"
-                      placeholder="Введите имя"
+                      placeholder="Введите фамилию"
                       value = {this.state.term} 
                       onChange={this.onTermChange}
                       variant="outlined"
-                      label = "Поиск по имени"/>
+                      label = "Поиск по фамилии"/>
                 <div className="search-panel__checkboxes">
                     <FormControlLabel
                         control= {
                             <Checkbox checked={this.state.checkedTerm} color="primary" onChange={() => this.clearState('term')}/>
                         }
-                        label="По имени"
+                        label="По фамилии"
                     />
                     <FormControlLabel
                         control= {
@@ -94,7 +94,7 @@ clearState = (searchType) => {
                         control= {
                             <Checkbox checked={this.state.checkedTerm} color="primary" onChange={() => this.clearState('term')}/>
                         }
-                        label="По имени"
+                        label="По фамилии"
                     />
                     <FormControlLabel
                         control= {

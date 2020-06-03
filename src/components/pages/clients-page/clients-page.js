@@ -27,7 +27,7 @@ import withServerService from '../../hoc/with-server-service'
   }
   getItems = () => {
     const {serverService} = this.props
-    serverService.getClients()
+    serverService.getMinors()
     .then(({data}) => {
       this.setState({
         items: data,
@@ -53,7 +53,7 @@ import withServerService from '../../hoc/with-server-service'
     this.setState({
       loading: true
     })
-    serverService.addClient(item)
+    serverService.addMinor(item)
       .then(this.getItems)
       .catch(err => console.error(err))
   }
@@ -64,7 +64,7 @@ import withServerService from '../../hoc/with-server-service'
         })
       }
       const result = SearchItems.filter((item) => {
-        return item.name.toLowerCase()
+        return item.Surname.toLowerCase()
         .indexOf(term.toLowerCase()) > -1
       });
       this.setState({
@@ -78,7 +78,7 @@ import withServerService from '../../hoc/with-server-service'
         })   
       } else {
         const result = SearchItems.filter((item) => {
-          return item.client_id === numb
+          return item.id_minor === numb
         });
         
         this.setState({
@@ -119,7 +119,7 @@ import withServerService from '../../hoc/with-server-service'
         <ClientsTable items = {visibleItems} removeItem={this.removeItem}/>
       </ErrorBoundary>
       <ErrorBoundary>
-        <ClientsForm addClient={this.addItem}/>
+        <ClientsForm addMinor={this.addItem}/>
       </ErrorBoundary>
     </div>
       
