@@ -58,10 +58,9 @@ import withServerService from '../../hoc/with-server-service'
       .catch(err => console.error(err))
   }
   searchItemByTerm = (SearchItems, term) => {
-      const {items} = this.state
       if(term.length === 0) {
         this.setState({
-          visibleItems: items
+          visibleItems: SearchItems
         })
       }
       const result = SearchItems.filter((item) => {
@@ -73,10 +72,9 @@ import withServerService from '../../hoc/with-server-service'
       })  
     }
     searchItemByNumb = (SearchItems, numb) => {
-      const {items} = this.state
       if(numb === 0 || numb === '') {
         this.setState({
-          visibleItems: items
+          visibleItems: SearchItems
         })   
       } else {
         const result = SearchItems.filter((item) => {
@@ -118,7 +116,7 @@ import withServerService from '../../hoc/with-server-service'
         <ClientsSearchPanel onChangeTerm={this.onChangeTerm} onChangeNumb={this.onChangeNumb}/>
       </ErrorBoundary>
       <ErrorBoundary>
-        <ClientsTable clients = {visibleItems} removeClient={this.removeItem}/>
+        <ClientsTable items = {visibleItems} removeItem={this.removeItem}/>
       </ErrorBoundary>
       <ErrorBoundary>
         <ClientsForm addClient={this.addItem}/>

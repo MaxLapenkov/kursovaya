@@ -13,8 +13,8 @@ import Paper from '@material-ui/core/Paper';
  export default class ClientsTable extends Component {
     
     removeClient = (id) => {
-        const {removeClient} = this.props
-        removeClient(id)
+        const {removeItem} = this.props
+        removeItem(id)
     }
 
     renderClient = ({client_id, name, phone, status}) => {
@@ -31,7 +31,7 @@ import Paper from '@material-ui/core/Paper';
     }
 
     render() {
-        const {clients} = this.props
+        const {items} = this.props
         return (
             <div>
               <TableContainer component={Paper}>
@@ -46,7 +46,7 @@ import Paper from '@material-ui/core/Paper';
                 </TableRow>
                 </TableHead>
                   <TableBody>
-                    {clients.map(this.renderClient)}
+                    {items.map(this.renderClient)}
                   </TableBody>
                   
                 </Table>
