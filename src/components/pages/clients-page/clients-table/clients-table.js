@@ -13,13 +13,15 @@ import Paper from '@material-ui/core/Paper';
 import './clients-table.css'
  export default class ClientsTable extends Component {
     
-    removeClient = (id) => {
+    removeMinor= (id) => {
         const {removeItem} = this.props
         removeItem(id)
     }
     getPhoto = (foto) => {
+
+      
       if(foto != null) {
-        const arrayBufferView = new  Uint8Array(foto.data)
+        const arrayBufferView = new Uint8Array(foto.data)
         const blob = new Blob([arrayBufferView], { type: "image/png" })
         const urlCreator = window.URL || window.webkitURL;
         return urlCreator.createObjectURL(blob)
@@ -42,7 +44,7 @@ import './clients-table.css'
              
         return (
           <TableRow key={id_minor}>
-            <TableCell align="left" size="small"><Button variant="contained" color="secondary" size="small" onClick = {() => this.removeClient(id_minor)}><DeleteForeverIcon fontSize="small"/></Button></TableCell>
+            <TableCell align="left" size="small"><Button variant="contained" color="secondary" size="small" onClick = {() => this.removeMinor(id_minor)}><DeleteForeverIcon fontSize="small"/></Button></TableCell>
             <TableCell component="th" scope="row">{id_minor}</TableCell>
             <TableCell align="center">{Surname}</TableCell>
             <TableCell align="center">{Name}</TableCell>

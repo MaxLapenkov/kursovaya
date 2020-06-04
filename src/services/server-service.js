@@ -22,7 +22,10 @@ async addMinor(item){
     //  async addClient(client){
     //     await fetch(`https://arcane-everglades-15227.herokuapp.com/clients/add?name=${client.name}&phone=${client.phone}&status=${client.status}`)
     //   }
-      async removeClient(id) {
-       await fetch(`https://arcane-everglades-15227.herokuapp.com/clients/remove?id=${id}`)
-      }
+    async removeMinor(id) {
+      await fetch(`http://localhost:4000/minors/remove?id=${id}`)
+     }
+      // async removeClient(id) {
+      //  await fetch(`https://arcane-everglades-15227.herokuapp.com/clients/remove?id=${id}`)
+      // }
 }

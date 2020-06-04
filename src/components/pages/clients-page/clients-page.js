@@ -43,7 +43,7 @@ import withServerService from '../../hoc/with-server-service'
     this.setState({
       loading: true
     })
-    serverService.removeClient(id)
+    serverService.removeMinor(id)
     .then(this.getItems)
     .catch(err => console.error(err))
   }

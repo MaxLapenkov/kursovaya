@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Button from '@material-ui/core/Button';
-import { TextField, Select, MenuItem, FormControl, InputLabel  } from '@material-ui/core';
+import { TextField, Select, MenuItem, FormControl, InputLabel, FormLabel  } from '@material-ui/core';
+import './clients-from.css'
 const ClientsForm = ({addMinor}) => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -30,7 +31,7 @@ const ClientsForm = ({addMinor}) => {
     const [disability, setDisability] = useState('');
     const [homeSchooling, setHomeSchooling] = useState('');
     const [medCard, setMedCard] = useState('');
-    const [photo, setPhoto] = useState('');
+    const [photo, setPhoto] = useState(null);
     const [nameError, setNameError] = useState(false)
     const [phoneError, setPhoneError] = useState(false)
     
@@ -46,7 +47,7 @@ const ClientsForm = ({addMinor}) => {
         Mother_workplace: motherJob,
         Phone_number_mom: motherPhone,
         FCS_father: fatherName,
-        Father_workplace: fatherJob,
+        Father__workplace: fatherJob,
         Phone_number_dad: fatherPhone,
         Needy_family: needyStatus,
         Large_family: largeStatus,
@@ -64,55 +65,79 @@ const ClientsForm = ({addMinor}) => {
         Information_about_homeschooling: homeSchooling,
         Availability_of_a_medical_card: medCard,
         foto: photo
-
-
-
-
-        
+  
     }
+   
+    // const readFile = (value) => {
+    //       const reader = new FileReader()
+    //       reader.readAsDataURL(value)
+    //       reader.onload = function() {
+    //         setPhoto(reader.result)
+    //       };
+
+    // }
+   const SendInfo = () => {
+     addMinor(minor)
+   }
+   
+    
+   
+    
+    
     return (
         <form className="form" noValidate autoComplete="off">
-          <TextField  margin="normal"  label="Фамилия" value={surname} onChange={ (e) => setSurname(e.target.value)}/>
-          <TextField error={nameError} margin="normal"  label="Имя" value={name} onChange={ (e) => setName(e.target.value)}/>
-          <TextField  margin="normal"  label="Отчество" value={paternity} onChange={ (e) => setPaternity(e.target.value)}/>
-          <FormControl>
-            <InputLabel id="demo-simple-select-label">Пол</InputLabel>
-            <Select  className = "form__select" labelId="demo-simple-select-label" id="demo-simple-select"
-            value={gender}
-            onChange={ e => setGender(e.target.value)}>
-              <MenuItem value="М">Мужской</MenuItem>
-              <MenuItem value="Ж">Женский</MenuItem>
-            </Select>
-          </FormControl>
-          
-          <TextField  margin="normal"  label="Дата рождения" value={birthDate} type="date" onChange={ (e) => setBirthDate(e.target.value)}/>
-          <FormControl>
-            <InputLabel id="demo-simple-select-label">Школьный класс</InputLabel>
-            <Select className = "form__select" labelId="demo-simple-select-label" id="demo-simple-select"
-            value={schoolClass}
-            onChange={ e => setSchoolClass(e.target.value)}>
-              <MenuItem value="1">1</MenuItem>
-              <MenuItem value="2">2</MenuItem>
-              <MenuItem value="3">3</MenuItem>
-              <MenuItem value="4">4</MenuItem>
-              <MenuItem value="5">5</MenuItem>
-              <MenuItem value="6">6</MenuItem>
-              <MenuItem value="7">7</MenuItem>
-              <MenuItem value="8">8</MenuItem>
-              <MenuItem value="9">9</MenuItem>
-              <MenuItem value="10">10</MenuItem>
-              <MenuItem value="11">11</MenuItem>
-            </Select>
-          </FormControl>
-          
-          <TextField  margin="normal"  label="Место жительства" value={registration} onChange={ (e) => setRegistration(e.target.value)}/>
-          <TextField  margin="normal"  label="ФИО матери" value={motherName} onChange={ (e) => setMotherName(e.target.value)}/>
-          <TextField  margin="normal"  label="место работы матери" value={motherJob} onChange={ (e) => setMotherJob(e.target.value)}/>
-          <TextField error={phoneError} margin="normal" className = "form__input"  label="Телефон матери" type="number" helperText="Формат ввода: 88005553535" value={motherPhone} onChange={ e => setMotherPhone(e.target.value)}/>
-          <TextField  margin="normal"  label="ФИО отца" value={fatherName} onChange={ (e) => setFatherName(e.target.value)}/>
-          <TextField  margin="normal"  label="место работы отца" value={fatherJob} onChange={ (e) => setFatherJob(e.target.value)}/>
-          <TextField margin="normal" className = "form__input"  label="Телефон отца" type="number" helperText="Формат ввода: 88005553535" value={fatherPhone} onChange={ e => setFatherPhone(e.target.value)}/>
-          <FormControl>
+            <FormLabel className="form__label">Информация о ребенке</FormLabel>
+            <TextField  required margin="normal"  label="Фамилия" value={surname} onChange={ (e) => setSurname(e.target.value)}/>
+            <TextField required error={nameError} margin="normal"  label="Имя" value={name} onChange={ (e) => setName(e.target.value)}/>
+            <TextField  required margin="normal"  label="Отчество" value={paternity} onChange={ (e) => setPaternity(e.target.value)}/>
+            <FormControl required margin="normal">
+              <InputLabel id="demo-simple-select-label">Пол</InputLabel>
+              <Select  className = "form__select" labelId="demo-simple-select-label" id="demo-simple-select"
+              value={gender}
+              onChange={ e => setGender(e.target.value)}>
+                <MenuItem value="М">Мужской</MenuItem>
+                <MenuItem value="Ж">Женский</MenuItem>
+              </Select>
+            </FormControl>
+            
+            <TextField  required margin="normal"  label="Дата рождения" value={birthDate} type="date" onChange={ (e) => setBirthDate(e.target.value)}/>
+            <FormControl required margin="normal">
+              <InputLabel id="demo-simple-select-label">Школьный класс</InputLabel>
+              <Select className = "form__select" labelId="demo-simple-select-label" id="demo-simple-select"
+              value={schoolClass}
+              onChange={ e => setSchoolClass(e.target.value)}>
+                <MenuItem value="1">1</MenuItem>
+                <MenuItem value="2">2</MenuItem>
+                <MenuItem value="3">3</MenuItem>
+                <MenuItem value="4">4</MenuItem>
+                <MenuItem value="5">5</MenuItem>
+                <MenuItem value="6">6</MenuItem>
+                <MenuItem value="7">7</MenuItem>
+                <MenuItem value="8">8</MenuItem>
+                <MenuItem value="9">9</MenuItem>
+                <MenuItem value="10">10</MenuItem>
+                <MenuItem value="11">11</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField  required margin="normal"  label="Место жительства" value={registration} onChange={ (e) => setRegistration(e.target.value)}/>
+          <div className="form__row">
+            <div className="form__part">
+              <FormLabel className="form__label">Информация о матери</FormLabel>
+              <TextField  margin="normal"  label="ФИО матери" value={motherName} onChange={ (e) => setMotherName(e.target.value)}/>
+              <TextField  margin="normal"  label="место работы матери" value={motherJob} onChange={ (e) => setMotherJob(e.target.value)}/>
+              <TextField error={phoneError} margin="normal" className = "form__input"  label="Телефон матери" type="number" helperText="Формат ввода: 88005553535" value={motherPhone} onChange={ e => setMotherPhone(e.target.value)}/>
+            </div>
+            <div className="form__part">
+              <FormLabel className="form__label">Информация об отце</FormLabel>
+              <TextField  margin="normal"  label="ФИО отца" value={fatherName} onChange={ (e) => setFatherName(e.target.value)}/>
+              <TextField  margin="normal"  label="место работы отца" value={fatherJob} onChange={ (e) => setFatherJob(e.target.value)}/>
+              <TextField margin="normal" className = "form__input"  label="Телефон отца" type="number" helperText="Формат ввода: 88005553535" value={fatherPhone} onChange={ e => setFatherPhone(e.target.value)}/>
+            </div>
+          </div>
+          <div className="form__row">
+          <div className="form__part form--shrink">
+          <FormLabel className="form__label">Статус семьи</FormLabel>
+          <FormControl margin="normal" >
             <InputLabel id="demo-simple-select-label">Малообеспеченная семья</InputLabel>
             <Select  className = "form__select" labelId="demo-simple-select-label" id="demo-simple-select"
             value={needyStatus}
@@ -121,7 +146,7 @@ const ClientsForm = ({addMinor}) => {
               <MenuItem value="да">Да</MenuItem>
             </Select>
           </FormControl>
-          <FormControl>
+          <FormControl margin="normal" >
             <InputLabel id="demo-simple-select-label">Многодетная семья</InputLabel>
             <Select  className = "form__select" labelId="demo-simple-select-label" id="demo-simple-select"
             value={largeStatus}
@@ -130,7 +155,7 @@ const ClientsForm = ({addMinor}) => {
               <MenuItem value="да">Да</MenuItem>
             </Select>
           </FormControl>
-          <FormControl>
+          <FormControl margin="normal" >
             <InputLabel id="demo-simple-select-label">Неблагополучная семья</InputLabel>
             <Select  className = "form__select" labelId="demo-simple-select-label" id="demo-simple-select"
             value={dysStatus}
@@ -139,9 +164,15 @@ const ClientsForm = ({addMinor}) => {
               <MenuItem value="да">Да</MenuItem>
             </Select>
           </FormControl>
+          </div>
+          <div className="form__part">
+          <FormLabel className="form__label">Информация об опеке</FormLabel>
           <TextField  margin="normal"  label="Информация об опеке" value={custody} onChange={ (e) => setCustody(e.target.value)}/>
           <TextField  margin="normal"  label="Опекун" value={guardian} onChange={ (e) => setGuardian(e.target.value)}/>
           <TextField  margin="normal"  label="Информация, если воспитанник детского дома" value={orphanage} onChange={ (e) => setOrphanage(e.target.value)}/>
+          </div>
+          </div>
+          <FormLabel className="form__label">Дополнительная информация</FormLabel>
           <TextField  margin="normal"  label="Информация о внутришкольном учете" value={inschool} onChange={ (e) => setInschool(e.target.value)}/>
           <TextField  margin="normal"  label="Информация о учете несовершеннолетнего в правоохранительных органах" value={law} onChange={ (e) => setLaw(e.target.value)}/>
           <TextField  margin="normal"  label="Примечания" value={note} onChange={ (e) => setNote(e.target.value)}/>
@@ -150,7 +181,7 @@ const ClientsForm = ({addMinor}) => {
           <TextField  margin="normal"  label="Информация о социальной помощи" value={assistance} onChange={ (e) => setAssistance(e.target.value)}/>
           <TextField  margin="normal"  label="Информация об инвалидности" value={disability} onChange={ (e) => setDisability(e.target.value)}/>
           <TextField  margin="normal"  label="Информация об обучении на дому" value={homeSchooling} onChange={ (e) => setHomeSchooling(e.target.value)}/>
-          <FormControl>
+          <FormControl margin="normal">
             <InputLabel id="demo-simple-select-label">Наличие медицинской карточки</InputLabel>
             <Select  className = "form__select" labelId="demo-simple-select-label" id="demo-simple-select"
             value={medCard}
@@ -159,9 +190,9 @@ const ClientsForm = ({addMinor}) => {
               <MenuItem value="Есть">Есть</MenuItem>
             </Select>
           </FormControl>
-          <TextField  margin="normal"  type="file" value={photo} onChange={ (e) => setPhoto(e.target.value)}/>
+          {/* <input  margin="normal"  type="file"  onChange={ (e) => readFile(e.target.files[0])} accept=".png" encType="multipart/formdata"/> Загрузка файла */}
           <Button className = "form__button" variant="contained" color="primary" size="small" 
-          onClick={() => addMinor(minor)}>Добавить несовершеннолетнего</Button>
+          onClick={() => SendInfo()}>Добавить несовершеннолетнего</Button>
         </form>
     )
 }
