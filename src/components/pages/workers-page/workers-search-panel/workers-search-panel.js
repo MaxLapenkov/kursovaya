@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { TextField, Checkbox, FormControlLabel } from '@material-ui/core';
-import './clients-search-panel.css';
+import './workers-search-panel.css'; 
 
-export default class ClientsSearchPanel extends Component  {
+export default class WorkersSearchPanel extends Component  {
   state = {
     searchType: 'term',
     term: '',

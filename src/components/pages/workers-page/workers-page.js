@@ -3,16 +3,18 @@ import React, { Component } from 'react';
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Spinner from '../../spinner'
-import ClientsForm from './clients-form'
-import ClientsSearchPanel from './clients-search-panel'
 
-import './clients-page.css'
-import ClientsTable from './clients-table';
+
+
+import './workers-page.css'
+import WorkersTable from './workers-table';
+import WorkersForm from './workers-form';
+import WorkersSearchPanel from './workers-search-panel'
 import ErrorBoundary from '../../error-boundary'
 import withServerService from '../../hoc/with-server-service'
 
 
- class ClientsPage extends Component {
+ class WorkersPage extends Component {
   
   state = {
     items: [],
@@ -27,7 +29,7 @@ import withServerService from '../../hoc/with-server-service'
   }
   getItems = () => {
     const {serverService} = this.props
-    serverService.getMinors()
+    serverService.getWorkers()
     .then(({data}) => {
       this.setState({
         items: data,
@@ -43,7 +45,7 @@ import withServerService from '../../hoc/with-server-service'
     this.setState({
       loading: true
     })
-    serverService.removeMinor(id)
+    serverService.removeWorker(id)
     .then(this.getItems)
     .catch(err => console.error(err))
   }
@@ -53,7 +55,7 @@ import withServerService from '../../hoc/with-server-service'
     this.setState({
       loading: true
     })
-    serverService.addMinor(item)
+    serverService.addWorker(item)
       .then(this.getItems)
       .catch(err => console.error(err))
   }
@@ -78,7 +80,7 @@ import withServerService from '../../hoc/with-server-service'
         })   
       } else {
         const result = SearchItems.filter((item) => {
-          return item.id_minor === numb
+          return item.id_worker === numb
         });
         
         this.setState({
@@ -107,19 +109,19 @@ import withServerService from '../../hoc/with-server-service'
           <TableContainer component={Paper}>
             <Spinner/>
           </TableContainer>
-          <ClientsForm addClient={this.addItem}/>
+          <WorkersForm addClient={this.addItem}/>
       </div>
       )
     return (
     <div>
       <ErrorBoundary>
-        <ClientsSearchPanel onChangeTerm={this.onChangeTerm} onChangeNumb={this.onChangeNumb}/>
+        <WorkersSearchPanel onChangeTerm={this.onChangeTerm} onChangeNumb={this.onChangeNumb}/>
       </ErrorBoundary>
       <ErrorBoundary>
-        <ClientsTable items = {visibleItems} removeItem={this.removeItem}/>
+        <WorkersTable items = {visibleItems} removeItem={this.removeItem}/>
       </ErrorBoundary>
       <ErrorBoundary>
-        <ClientsForm addMinor={this.addItem}/>
+        <WorkersForm addWorker={this.addItem}/>
       </ErrorBoundary>
     </div>
       
@@ -128,5 +130,5 @@ import withServerService from '../../hoc/with-server-service'
     
 }
 
-export default withServerService()(ClientsPage)
+export default withServerService()(WorkersPage)
 

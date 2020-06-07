@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import { TextField, Select, MenuItem, FormControl, InputLabel, FormLabel  } from '@material-ui/core';
-import './clients-from.css'
-const ClientsForm = ({addMinor}) => {
+import './minors-form.css'
+const MinorsForm = ({addMinor}) => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [paternity, setPaternity] = useState('');
@@ -197,4 +197,4 @@ const ClientsForm = ({addMinor}) => {
     )
 }
 
-export default ClientsForm
+export default MinorsForm

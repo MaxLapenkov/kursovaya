@@ -10,8 +10,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import './clients-table.css'
- export default class ClientsTable extends Component {
+import './minors-table.css'
+ export default class MinorsTable extends Component {
     
     removeMinor= (id) => {
         const {removeItem} = this.props

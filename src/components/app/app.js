@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './app.css';
-import ClientsPage from '../pages/clients-page'
+import MinorsPage from '../pages/minors-page'
+import WorkersPage from '../pages/workers-page'
 import PageHeader from '../header'
+import { Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 import { Container } from '@material-ui/core';
 import ErrorBoundary from '../error-boundary'
 import {ServerServiceProvider} from '../server-service-context';
@@ -10,11 +12,27 @@ const serverService = new ServerService()
 const App = () => {
   return (
     <div>
-    <PageHeader/>
+    
     <Container maxWidth="lg" disableGutters>
       <ErrorBoundary>
         <ServerServiceProvider value={serverService}>
-          <ClientsPage/>
+          <Router>
+          <PageHeader/>
+            <Switch>
+              <Route path="/kursovaya" render={() => (
+                <Fragment>
+                  <h1 align="center">Добро пожаловать</h1>
+                  <h2 align="center">Для продолжения перейдите по ссылке сверху</h2>
+                </Fragment>
+              )}/>
+              <Route path="/minors">
+                <MinorsPage/>
+              </Route>
+              <Route path="/workers">
+                <WorkersPage/>
+              </Route>
+            </Switch>
+          </Router>
         </ServerServiceProvider>
       </ErrorBoundary>
     </Container>
