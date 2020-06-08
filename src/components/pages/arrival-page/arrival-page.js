@@ -6,34 +6,60 @@ import Spinner from '../../spinner'
 
 
 
-import './pupils-schedule-page.css'
-import PupilsScheduleTable from './pupils-schedule-table';
-import PupilsScheduleForm from './pupils-schedule-form';
+import './arrival-page.css'
+import ArrivalTable from './arrival-table';
+import ArrivalForm from './arrival-form';
+import ArrivalSearchPanel from './arrival-search-panel'
 import ErrorBoundary from '../../error-boundary'
 import withServerService from '../../hoc/with-server-service'
 
 
- class PupilsSchedulePage extends Component {
+ class ArrivalPage extends Component {
   
   state = {
     items: [],
+    minors: [],
+    workers: [],
     loading: true,
     term: '',
     numb: '',
     visibleItems: []
   }
-
+  
+  
   componentDidMount() {
     this.getItems()
+    this.getMinors()
+    this.getWorkers()
   }
   getItems = () => {
     const {serverService} = this.props
-    serverService.getPupilSchedules()
+    serverService.getArrivals()
     .then(({data}) => {
       this.setState({
         items: data,
         visibleItems: data,
         loading: false
+      })  
+    })
+    .catch(err => console.error(err))
+  }
+  getMinors = () => {
+    const {serverService} = this.props
+    serverService.getMinors()
+    .then(({data}) => {
+      this.setState({
+        minors: data
+      })  
+    })
+    .catch(err => console.error(err))
+  }
+  getWorkers = () => {
+    const {serverService} = this.props
+    serverService.getWorkers()
+    .then(({data}) => {
+      this.setState({
+        workers: data
       })  
     })
     .catch(err => console.error(err))
@@ -44,7 +70,7 @@ import withServerService from '../../hoc/with-server-service'
     this.setState({
       loading: true
     })
-    serverService.removePupilsSchedule(id)
+    serverService.removeArrival(id)
     .then(this.getItems)
     .catch(err => console.error(err))
   }
@@ -54,7 +80,7 @@ import withServerService from '../../hoc/with-server-service'
     this.setState({
       loading: true
     })
-    serverService.addPupilsSchedule(item)
+    serverService.addArrival(item)
       .then(this.getItems)
       .catch(err => console.error(err))
   }
@@ -65,7 +91,7 @@ import withServerService from '../../hoc/with-server-service'
         })
       }
       const result = SearchItems.filter((item) => {
-        return item.Surname.toLowerCase()
+        return item.minorName.toLowerCase()
         .indexOf(term.toLowerCase()) > -1
       });
       this.setState({
@@ -79,7 +105,7 @@ import withServerService from '../../hoc/with-server-service'
         })   
       } else {
         const result = SearchItems.filter((item) => {
-          return item.id_worker === numb
+          return item.id === numb
         });
         
         this.setState({
@@ -100,24 +126,26 @@ import withServerService from '../../hoc/with-server-service'
   }
 
   render() {
-    const { loading, visibleItems } = this.state
-
+    const { loading, visibleItems, minors, workers } = this.state
     if(loading)
       return (
         <div>
           <TableContainer component={Paper}>
             <Spinner/>
           </TableContainer>
-          <PupilsScheduleForm addClient={this.addItem}/>
+          <ArrivalForm addClient={this.addItem}/>
       </div>
       )
     return (
     <div>
       <ErrorBoundary>
-        <PupilsScheduleTable items = {visibleItems} removeItem={this.removeItem}/>
+        <ArrivalSearchPanel onChangeTerm={this.onChangeTerm} onChangeNumb={this.onChangeNumb}/>
       </ErrorBoundary>
       <ErrorBoundary>
-        <PupilsScheduleForm addPupilsSchedule={this.addItem}/>
+        <ArrivalTable items = {visibleItems} removeItem={this.removeItem}/>
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <ArrivalForm addArrival={this.addItem} minors={minors} workers={workers}/>
       </ErrorBoundary>
     </div>
       
@@ -126,5 +154,5 @@ import withServerService from '../../hoc/with-server-service'
     
 }
 
-export default withServerService()(PupilsSchedulePage)
+export default withServerService()(ArrivalPage)
 

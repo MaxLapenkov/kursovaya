@@ -24,7 +24,15 @@ const useStyles = makeStyles((theme) => ({
     return (
       <div className={classes.root}>
         <AppBar position="static">
+        <Toolbar className={classes.tool}>
+          <Typography variant="h4" className={classes.title}>
+          ГКУ СО «Чапаевский СРЦН»
+          </Typography>
+        </Toolbar>
           <Toolbar className={classes.tool}>
+          <Typography variant="h6" className={classes.title}>
+              <Link to="/arrival" className="header__link">Прибытие в центр</Link>
+            </Typography>
             <Typography variant="h6" className={classes.title}>
               <Link to="/minors" className="header__link">Дети</Link>
             </Typography>
@@ -32,7 +40,16 @@ const useStyles = makeStyles((theme) => ({
               <Link to="/workers" className="header__link">Работники</Link>
             </Typography>
             <Typography variant="h6" className={classes.title}>
-              <Link to="/pupils-schedule" className="header__link">Режим дня воспитанников</Link>
+              <Link to="/pupils-schedule" className="header__link">Режим дня</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/employee-schedule" className="header__link">График работы</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/achievments" className="header__link">Достижения</Link>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/cards" className="header__link">Амбулаторные карты</Link>
             </Typography>
           </Toolbar>
         </AppBar>

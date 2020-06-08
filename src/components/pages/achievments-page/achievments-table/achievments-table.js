@@ -10,10 +10,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import './workers-table.css'
- export default class WorkersTable extends Component {
+import './achievments-table.css'
+ export default class AchievmentsTable extends Component { 
     
-    removeMinor= (id) => {
+    removePupilsSchedule= (id) => {
         const {removeItem} = this.props
         removeItem(id)
     }
@@ -29,27 +29,21 @@ import './workers-table.css'
       }
     }
 
-    renderClient = ({id_worker, Surname, Name, First_name, Paul, Data_of_birth, Phone_number,
-    Education, type, foto}) => {
+    renderClient = ({id, id_minor, Name_of_the_achievement, Surname, Name, foto}) => {
 
-            Data_of_birth = Data_of_birth.substr(0, 10);
-            // const result = this.getPhoto(foto)
+            // const result = this.getPhoto(foto);
             
 
              
              
         return (
-          <TableRow key={id_worker}>
-            <TableCell align="left" size="small"><Button variant="contained" color="secondary" size="small" onClick = {() => this.removeMinor(id_worker)}><DeleteForeverIcon fontSize="small"/></Button></TableCell>
-            <TableCell component="th" scope="row">{id_worker}</TableCell>
+          <TableRow key={id}>
+            <TableCell align="center" size="small"><Button variant="contained" color="secondary" size="small" onClick = {() => this.removePupilsSchedule(id)}><DeleteForeverIcon fontSize="small"/></Button></TableCell>
+            <TableCell component="th" scope="row" align="center">{id}</TableCell>
+            <TableCell align="center">{id_minor}</TableCell>
             <TableCell align="center">{Surname}</TableCell>
             <TableCell align="center">{Name}</TableCell>
-            <TableCell align="center">{First_name}</TableCell>
-            <TableCell align="center">{Paul}</TableCell>
-            <TableCell align="center">{Data_of_birth}</TableCell>
-            <TableCell align="center">{Education}</TableCell>
-            <TableCell align="center">{type}</TableCell>
-            <TableCell align="center">{Phone_number}</TableCell>
+            <TableCell align="center">{Name_of_the_achievement}</TableCell>
             {/* <TableCell align="center">{<a href={result} download>Скачать</a>}</TableCell> */}
           </TableRow>    
         )
@@ -63,17 +57,13 @@ import './workers-table.css'
               <TableContainer component={Paper}>
                 <Table aria-label="simple table table-bordered">
                 <TableHead>
-                  <TableRow>
-                      <TableCell></TableCell>
-                      <TableCell>#</TableCell>
+                  <TableRow> 
+                      <TableCell align="center"></TableCell>
+                      <TableCell align="center">#</TableCell>
+                      <TableCell align="center">Идентификатор несовершеннолетнего</TableCell>
                       <TableCell align="center">Фамилия</TableCell>
                       <TableCell align="center">Имя</TableCell>
-                      <TableCell align="center">Отчество</TableCell>
-                      <TableCell align="center">Пол</TableCell>
-                      <TableCell align="center">Дата рождения</TableCell>
-                      <TableCell align="center">Образование</TableCell>
-                      <TableCell align="center">Тип</TableCell>
-                      <TableCell align="center">Телефон</TableCell>
+                      <TableCell align="center">Наименование достижения</TableCell>
                       {/* <TableCell align="center">Фото</TableCell> */}
                 </TableRow>
                 </TableHead>

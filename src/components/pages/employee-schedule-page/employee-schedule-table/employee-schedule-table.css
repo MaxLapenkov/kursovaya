@@ -1,0 +1,7 @@
+th, td {
+    border: 1px grey solid;
+    
+}
+.schedule--cell {
+    word-break: break-all;
+}

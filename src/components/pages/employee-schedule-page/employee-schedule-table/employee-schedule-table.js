@@ -10,8 +10,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import './pupils-schedule-table.css'
- export default class PupilsScheduleTable extends Component { 
+import './employee-schedule-table.css'
+ export default class EmployeeScheduleTable extends Component { 
     
     removePupilsSchedule= (id) => {
         const {removeItem} = this.props
@@ -29,21 +29,21 @@ import './pupils-schedule-table.css'
       }
     }
 
-    renderClient = ({id, year_min, year_max, daily_schedule, foto}) => {
+    renderClient = ({id, id_worker, Data_work, Surname, foto}) => {
 
-            const result = this.getPhoto(foto)
-            
+            // const result = this.getPhoto(foto);
+            const date = Data_work.substr(0, 10);
 
              
              
         return (
           <TableRow key={id}>
-            <TableCell align="left" size="small"><Button variant="contained" color="secondary" size="small" onClick = {() => this.removePupilsSchedule(id)}><DeleteForeverIcon fontSize="small"/></Button></TableCell>
-            <TableCell component="th" scope="row">{id}</TableCell>
-            <TableCell align="center">{year_min}</TableCell>
-            <TableCell align="center">{year_max}</TableCell>
-            <TableCell align="center" className="schedule--cell">{daily_schedule}</TableCell>
-            <TableCell align="center">{<a href={result} download>Скачать</a>}</TableCell>
+            <TableCell align="center" size="small"><Button variant="contained" color="secondary" size="small" onClick = {() => this.removePupilsSchedule(id)}><DeleteForeverIcon fontSize="small"/></Button></TableCell>
+            <TableCell component="th" scope="row" align="center">{id}</TableCell>
+            <TableCell align="center">{id_worker}</TableCell>
+            <TableCell align="center">{Surname}</TableCell>
+            <TableCell align="center">{date}</TableCell>
+            {/* <TableCell align="center">{<a href={result} download>Скачать</a>}</TableCell> */}
           </TableRow>    
         )
       
@@ -56,13 +56,13 @@ import './pupils-schedule-table.css'
               <TableContainer component={Paper}>
                 <Table aria-label="simple table table-bordered">
                 <TableHead>
-                  <TableRow>
-                      <TableCell></TableCell>
-                      <TableCell>#</TableCell>
-                      <TableCell align="center">Возраст минимальный</TableCell>
-                      <TableCell align="center">Возраст максимальный</TableCell>
-                      <TableCell align="center">Распорядок дня</TableCell>
-                      <TableCell align="center">Фото</TableCell>
+                  <TableRow> 
+                      <TableCell align="center"></TableCell>
+                      <TableCell align="center">#</TableCell>
+                      <TableCell align="center">Идентификатор сотрудника</TableCell>
+                      <TableCell align="center">Фамилия сотрудника</TableCell>
+                      <TableCell align="center">Дата</TableCell>
+                      {/* <TableCell align="center">Фото</TableCell> */}
                 </TableRow>
                 </TableHead>
                   <TableBody>

@@ -1,0 +1,10 @@
+.search-panel {
+    display: flex;
+    align-items: center;
+}
+.search-panel__checkboxes{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

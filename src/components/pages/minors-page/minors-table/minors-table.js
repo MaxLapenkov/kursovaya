@@ -37,7 +37,7 @@ import './minors-table.css'
            Information_about_social_assistance, Disability_information, Information_about_homeschooling, Availability_of_a_medical_card, foto}) => {
 
             Data_of_birth = Data_of_birth.substr(0, 10);
-            const result = this.getPhoto(foto)
+            // const result = this.getPhoto(foto)
             
 
              
@@ -74,7 +74,7 @@ import './minors-table.css'
             <TableCell align="center">{Disability_information}</TableCell>
             <TableCell align="center">{Information_about_homeschooling}</TableCell>
             <TableCell align="center">{Availability_of_a_medical_card}</TableCell>
-            <TableCell align="center">{<a href={result} download>Скачать</a>}</TableCell>
+            {/* <TableCell align="center">{<a href={result} download>Скачать</a>}</TableCell> */}
             
           </TableRow>    
         )
@@ -119,7 +119,7 @@ import './minors-table.css'
                       <TableCell align="center">Информация об инвалидности</TableCell>
                       <TableCell align="center">Информация об обучении на дому</TableCell>
                       <TableCell align="center">Наличие медицинской карточки</TableCell>
-                      <TableCell align="center">Фото</TableCell>
+                      {/* <TableCell align="center">Фото</TableCell> */}
                 </TableRow>
                 </TableHead>
                   <TableBody>

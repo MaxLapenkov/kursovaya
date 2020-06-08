@@ -1,0 +1,25 @@
+.form{
+    max-width: 1200px !important;
+}
+.form__part{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.form__part:first-of-type{
+    margin-right: 50px;
+}
+.form__row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.form--shrink{
+    flex-grow: 0;
+    flex-basis: 20%;
+}
+.form__label{
+    font-weight: bold !important;
+    text-align: center;
+    margin-top: 40px;
+}

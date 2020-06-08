@@ -3,6 +3,10 @@ import './app.css';
 import MinorsPage from '../pages/minors-page'
 import WorkersPage from '../pages/workers-page'
 import PupilsSchedulePage from '../pages/pupils-schedule-page'
+import EmployeeSchedulePage from '../pages/employee-schedule-page'
+import AchievmentsPage from '../pages/achievments-page'
+import CardsPage from '../pages/cards-page'
+import ArrivalPage from '../pages/arrival-page'
 import PageHeader from '../header'
 import { Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 import { Container } from '@material-ui/core';
@@ -26,6 +30,9 @@ const App = () => {
                   <h2 align="center">Для продолжения перейдите по ссылке сверху</h2>
                 </Fragment>
               )}/>
+              <Route path="/arrival">
+                <ArrivalPage/>
+              </Route>
               <Route path="/minors">
                 <MinorsPage/>
               </Route>
@@ -34,6 +41,15 @@ const App = () => {
               </Route>
               <Route path="/pupils-schedule">
                 <PupilsSchedulePage/>
+              </Route>
+              <Route path="/employee-schedule">
+                <EmployeeSchedulePage/>
+              </Route>
+              <Route path="/achievments">
+                <AchievmentsPage/>
+              </Route>
+              <Route path="/cards">
+                <CardsPage/>
               </Route>
             </Switch>
           </Router>

@@ -1,2 +1,2 @@
-import PupilsSchedulePage from './pupils-schedule-page'
-export default PupilsSchedulePage
+import EmployeeSchedulePage from './employee-schedule-page'
+export default EmployeeSchedulePage
