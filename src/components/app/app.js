@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import './app.css';
 import MinorsPage from '../pages/minors-page'
 import WorkersPage from '../pages/workers-page'
+import PupilsSchedulePage from '../pages/pupils-schedule-page'
 import PageHeader from '../header'
 import { Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 import { Container } from '@material-ui/core';
@@ -30,6 +31,9 @@ const App = () => {
               </Route>
               <Route path="/workers">
                 <WorkersPage/>
+              </Route>
+              <Route path="/pupils-schedule">
+                <PupilsSchedulePage/>
               </Route>
             </Switch>
           </Router>
