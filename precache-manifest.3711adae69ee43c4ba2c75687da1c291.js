@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5a355790fc31530da8c057806b1eb760",
+    "revision": "f81d6dc272f6f7af55a2c3c53fa1ef84",
     "url": "/kursovaya/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kursovaya/static/css/2.d1a1a8b6.chunk.css"
   },
   {
-    "revision": "657286ee32b0685b570d",
+    "revision": "952ab7a3d1147fb52c2d",
     "url": "/kursovaya/static/css/main.ce060e79.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kursovaya/static/js/2.dbed6273.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "657286ee32b0685b570d",
-    "url": "/kursovaya/static/js/main.5defcfe1.chunk.js"
+    "revision": "952ab7a3d1147fb52c2d",
+    "url": "/kursovaya/static/js/main.0e7689bd.chunk.js"
   },
   {
     "revision": "300f9fe089ed739ea6d2",
