@@ -13,7 +13,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import './query-page.css'
-import ErrorBoundary from '../../error-boundary'
 import withServerService from '../../hoc/with-server-service'
 
 
@@ -34,16 +33,24 @@ const getItems = (query) => {
   }
 const renderHeader = (items) => {
    let header = Object.keys(items[0])
+   header.forEach((item, index) => {
+     if(item === 'foto') {
+      header.splice(index, 1)
+     }
+   })
    return header.map((key, index) => {
     return <TableCell key={index}>{key.toUpperCase()}</TableCell>
  })
 }
 
 const renderBody = (item) => {
-  console.log(item);
-  
+  let header = Object.keys(item)
   let body = Object.values(item)
-  
+  body.forEach((item, index) => {
+    if(item === null && header[index] === 'foto') {
+     body.splice(index, 1)
+    }
+  })
   return body.map((key, index) => {
     return <TableCell key={index}>{key}</TableCell>
 })
@@ -79,8 +86,6 @@ const renderBody = (item) => {
                   </TableHead>
                     <TableBody>
                       {items.map((item) => {
-                        console.log(item);
-                        
                         return (
                           <TableRow key={Math.random() * 1000}>
                               {renderBody(item)}
