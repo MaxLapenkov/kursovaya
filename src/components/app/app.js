@@ -7,6 +7,7 @@ import EmployeeSchedulePage from '../pages/employee-schedule-page'
 import AchievmentsPage from '../pages/achievments-page'
 import CardsPage from '../pages/cards-page'
 import ArrivalPage from '../pages/arrival-page'
+import QueryPage from '../pages/query-page'
 import PageHeader from '../header'
 import { Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 import { Container } from '@material-ui/core';
@@ -24,7 +25,7 @@ const App = () => {
           <Router>
           <PageHeader/>
             <Switch>
-              <Route path="/kursovaya" render={() => (
+              <Route path="/" exact render={() => (
                 <Fragment>
                   <h1 align="center">Добро пожаловать</h1>
                   <h2 align="center">Для продолжения перейдите по ссылке сверху</h2>
@@ -50,6 +51,9 @@ const App = () => {
               </Route>
               <Route path="/cards">
                 <CardsPage/>
+              </Route>
+              <Route path="/query">
+                <QueryPage/>
               </Route>
             </Switch>
           </Router>

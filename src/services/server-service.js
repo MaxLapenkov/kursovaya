@@ -15,6 +15,14 @@ async getMinors() {
     }
     return await res.json()
 }
+async getResults(query) {
+  const res = await fetch(`https://arcane-everglades-15227.herokuapp.com/query?textQuery=${query}`)
+    
+  if(!res.ok) {
+      throw new Error(`Could not fetch, received ${res.status}`)
+    }
+    return await res.json()
+}
 async getWorkers() {
   const res = await fetch('https://arcane-everglades-15227.herokuapp.com/workers')
     

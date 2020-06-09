@@ -51,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
             <Typography variant="h6" className={classes.title}>
               <Link to="/cards" className="header__link">Амбулаторные карты</Link>
             </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/query" className="header__link">Запросы</Link>
+            </Typography>
           </Toolbar>
         </AppBar>
       </div>
