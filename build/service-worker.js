@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kursovaya/precache-manifest.3711adae69ee43c4ba2c75687da1c291.js"
+  "/kursovaya/precache-manifest.0aad090ffb4d0746b5056c311bc3f7e5.js"
 );
 
 self.addEventListener('message', (event) => {

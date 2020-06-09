@@ -5,7 +5,12 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/Textfield'
 import Spinner from '../../spinner'
 import Button from '@material-ui/core/Button';
-
+import Table from '@material-ui/core/Table';
+import TableCell from '@material-ui/core/TableCell';
+import TableBody from '@material-ui/core/TableBody';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 import './query-page.css'
 import ErrorBoundary from '../../error-boundary'
@@ -27,32 +32,83 @@ const getItems = (query) => {
     })
     .catch(err => console.error(err))
   }
+const renderHeader = (items) => {
+   let header = Object.keys(items[0])
+   return header.map((key, index) => {
+    return <TableCell key={index}>{key.toUpperCase()}</TableCell>
+ })
+}
+
+const renderBody = (item) => {
+  console.log(item);
+  
+  let body = Object.values(item)
+  
+  return body.map((key, index) => {
+    return <TableCell key={index}>{key}</TableCell>
+})
+  }
+
+
   
     
-    if(loading)
+    if(loading) {
       return (
         <div component={Paper}>
           <Spinner/>
        </div>
       )
-    return (
-      <Fragment>
+    }
+      
+    if(items !== undefined) {
+      return (
+        <Fragment>
+          <div className="control__container">
+          <TextField margin="normal"  label="Запрос" value={query}  onChange={ (e) => setQuery(e.target.value)}/>
+          <Button variant="contained" color="primary" onClick={() => getItems(query)}>
+            Отправить запрос
+          </Button>
+          </div>
+          
+          <TableContainer component={Paper}>
+                  <Table aria-label="simple table table-bordered">
+                  <TableHead>
+                  <TableRow>
+                        {renderHeader(items)}
+                  </TableRow>
+                  </TableHead>
+                    <TableBody>
+                      {items.map((item) => {
+                        console.log(item);
+                        
+                        return (
+                          <TableRow key={Math.random() * 1000}>
+                              {renderBody(item)}
+                          </TableRow>
+                        )
+                      })}
+                    </TableBody>
+                    
+                  </Table>
+                  
+                  </TableContainer>
+          {/* <ErrorBoundary>
+            <Paper className="result__container">
+              {JSON.stringify(items)}
+            </Paper>
+          </ErrorBoundary> */}
+        </Fragment>
+      );
+    } else {
+      return (
         <div className="control__container">
-        <TextField margin="normal"  label="Запрос" value={query}  onChange={ (e) => setQuery(e.target.value)}/>
-        <Button variant="contained" color="primary" onClick={() => getItems(query)}>
-          Отправить запрос
-        </Button>
-        </div>
-        
-        <ErrorBoundary>
-          <Paper className="result__container">
-            {JSON.stringify(items)}
-          </Paper>
-        </ErrorBoundary>
-      </Fragment>
-      
-      
-    );
+          <TextField margin="normal"  label="Запрос" value={query}  onChange={ (e) => setQuery(e.target.value)}/>
+          <Button variant="contained" color="primary" onClick={() => getItems(query)}>
+            Отправить запрос
+          </Button>
+          </div>
+      )
+    } 
   }
     
 

@@ -32,10 +32,8 @@ import './pupils-schedule-table.css'
     renderClient = ({id, year_min, year_max, daily_schedule, foto}) => {
 
             // const result = this.getPhoto(foto)
-            
 
-             
-             
+    
         return (
           <TableRow key={id}>
             <TableCell align="left" size="small"><Button variant="contained" color="secondary" size="small" onClick = {() => this.removePupilsSchedule(id)}><DeleteForeverIcon fontSize="small"/></Button></TableCell>
