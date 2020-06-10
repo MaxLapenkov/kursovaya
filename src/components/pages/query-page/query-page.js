@@ -46,9 +46,12 @@ const renderHeader = (items) => {
 const renderBody = (item) => {
   let header = Object.keys(item)
   let body = Object.values(item)
-  body.forEach((item, index) => {
-    if(item === null && header[index] === 'foto') {
+  body.forEach((it, index) => {
+    if(it === null && header[index] === 'foto') {
      body.splice(index, 1)
+    }
+    if(header[index] === 'Data_of_birth' || header[index] === 'Date_of_arrival' || header[index] === 'Data_work' || header[index] === 'data_reception') {
+      body[index] = it.substr(0, 10)
     }
   })
   return body.map((key, index) => {
